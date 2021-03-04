@@ -97,7 +97,7 @@ class MainActivity : AppCompatActivity() {
 
          // airport --> String icao
          val airportSelectedIndex = findViewById<Spinner>(R.id.airportSpinner).selectedItemPosition
-         val selectedAirport = Utils.generateAirportList()[airportSelectedIndex]
+         val selectedAirport = viewmodel.getAirportListLiveData().value!![airportSelectedIndex]
          val airportIcao = selectedAirport.icao
 
          Log.i(
