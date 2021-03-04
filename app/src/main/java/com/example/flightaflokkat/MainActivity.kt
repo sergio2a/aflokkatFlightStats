@@ -33,6 +33,10 @@ class MainActivity : AppCompatActivity() {
             displayDate(beginDateTexview, it)
         })
 
+        viewmodel.getEndCalendarLiveData().observe(this, Observer {
+            displayDate(endDateTexview, it)
+        })
+
         //Récupérer aiportlist
         val airportList = Utils.generateAirportList()
 
