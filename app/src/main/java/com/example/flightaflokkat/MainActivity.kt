@@ -1,6 +1,7 @@
 package com.example.flightaflokkat
 
 import android.app.DatePickerDialog
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -104,5 +105,18 @@ class MainActivity : AppCompatActivity() {
              "SEARCH",
              "begin = $begin, end = $end, isArrival = $isArrival, airportIcao = $airportIcao"
          )
+
+        val intent = Intent(this,FlightListActivity::class.java)
+        intent.putExtra("BEGIN", begin)
+        intent.putExtra("END", end)
+        intent.putExtra("IS_ARRIVAL", isArrival)
+        intent.putExtra("AIRPORT_ICAO", airportIcao)
+        startActivity(intent)
+        //1 Passer les infos du search à une activité --> OK
+        //2 Récupérer ces infos dans l'activité FlightListActivity
+        //3 LAncer une requête en utilisant une AsyncTask
+        //4 Mettre à jour l'UI
+
+
     }
 }

@@ -2,6 +2,7 @@ package com.example.flightstats
 
 import android.content.Context
 import android.util.Log
+import com.example.flightaflokkat.FlightModel
 import com.google.gson.Gson
 import com.google.gson.JsonArray
 import com.google.gson.JsonParser
@@ -187,6 +188,18 @@ class Utils private constructor() {
                     duration.append("0").append(minute).append("min").toString()
                 } else duration.append(minute).append("min").toString()
             }
+        }
+
+        fun getFlightListFromJson(flights : String) : List<FlightModel>{
+            val parser = JsonParser ()
+            val jsonElement = parser.parse(flights)
+            val jsonArray =  jsonElement.asJsonArray
+
+            val flightsList = ArrayList<FlightModel>()
+            for(flightObject in jsonArray) {
+                flightsList.add(Gson().fromJson(flightObject.asJsonObject, FlightModel::class.java))
+            }
+            return flightsList
         }
     }
 }
