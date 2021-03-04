@@ -15,8 +15,11 @@ class FlightListAsyncTask(listener: RequestsManager.RequestListener) : AsyncTask
 
         val url =urls[0]
 
-        val result = RequestsManager.get(url, HashMap())
-        Log.i("RESULT", result!!)
+        var result = RequestsManager.get(url, HashMap())
+        if(result != null)
+            Log.i("RESULT", result)
+        else
+            result = "Something wrong happened"
 
 
         //Activity.onRequest Failed ou Success
