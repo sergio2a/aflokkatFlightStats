@@ -3,6 +3,8 @@ package com.example.flightaflokkat
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
+import com.example.flightstats.Airport
+import com.example.flightstats.Utils
 import java.util.*
 
 /**
@@ -13,6 +15,8 @@ class MainViewModel : ViewModel() {
 
     private val beginCalendarLiveData: MutableLiveData<Calendar> = MutableLiveData()
     private val endCalendarLiveData: MutableLiveData<Calendar> = MutableLiveData()
+    private val airportListLiveData: MutableLiveData<List<Airport>> = MutableLiveData()
+    private val airportNamesListLiveData: MutableLiveData<List<String>> = MutableLiveData()
 
     enum class DateType {
         BEGIN, END
@@ -21,6 +25,12 @@ class MainViewModel : ViewModel() {
     init {
         beginCalendarLiveData.value = Calendar.getInstance()
         endCalendarLiveData.value = Calendar.getInstance()
+        airportListLiveData.value = Utils.generateAirportList()
+        val airportListName = ArrayList<String>()
+        for (airport in airportListLiveData.value!!) {
+            airportListName.add(airport.getFormattedName())
+        }
+        airportNamesListLiveData.value = airportListName
     }
 
     fun getBeginCalendarLiveData(): LiveData<Calendar> {
@@ -42,6 +52,14 @@ class MainViewModel : ViewModel() {
 
     fun getEndCalendarLiveData(): LiveData<Calendar> {
         return endCalendarLiveData
+    }
+
+    fun getAirportListLiveData(): LiveData<List<Airport>> {
+        return airportListLiveData
+    }
+
+    fun getAirportNamesListLiveData(): LiveData<List<String>> {
+        return airportNamesListLiveData
     }
 
 }

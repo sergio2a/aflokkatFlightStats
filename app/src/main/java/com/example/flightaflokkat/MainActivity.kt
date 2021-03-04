@@ -37,26 +37,20 @@ class MainActivity : AppCompatActivity() {
             displayDate(endDateTexview, it)
         })
 
-        //Récupérer aiportlist
-        val airportList = Utils.generateAirportList()
 
-        //Générer list de noms d'aeroport
-        val airportListName = ArrayList<String>()
-        for (airport in airportList) {
-            airportListName.add(airport.getFormattedName())
-        }
-
-        //Générer arrayadapter
-        val arrayAdapter =
-            ArrayAdapter<String>(
-                this,
-                android.R.layout.simple_spinner_dropdown_item,
-                airportListName
-            )
-
-        //Spinner adapter = arrayadapter
         val spinner = findViewById<Spinner>(R.id.airportSpinner)
-        spinner.adapter = arrayAdapter
+
+        viewmodel.getAirportNamesListLiveData().observe(this, Observer {
+            //Générer arrayadapter
+            val arrayAdapter =
+                ArrayAdapter<String>(
+                    this,
+                    android.R.layout.simple_spinner_dropdown_item,
+                    it
+                )
+
+            spinner.adapter = arrayAdapter
+        })
 
         //show picker on click
         beginDateTexview.setOnClickListener {
