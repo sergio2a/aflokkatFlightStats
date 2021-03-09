@@ -27,7 +27,8 @@ class FlightListActivity : AppCompatActivity(){
         val progressBar = findViewById<View>(R.id.progressbar)
 
         viewmodel.getFlightListLiveData().observe(this, Observer {
-            findViewById<TextView>(R.id.textView).text = it.toString()
+            //findViewById<TextView>(R.id.textView).text = it.toString()
+            //findViewById<FlightInfoCell>(R.id.flightCell).bindData(it[0])
         })
 
         viewmodel.getLoadingLiveData().observe(this, Observer {
