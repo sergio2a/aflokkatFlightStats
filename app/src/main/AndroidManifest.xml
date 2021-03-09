@@ -12,8 +12,8 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.FlightAflokkat">
-        <activity android:name=".FlightListActivity"></activity>
-        <activity android:name=".MainActivity">
+        <activity android:name=".flightlist.FlightListActivity"></activity>
+        <activity android:name=".form.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

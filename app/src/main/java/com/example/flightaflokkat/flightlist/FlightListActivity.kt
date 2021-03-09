@@ -1,13 +1,12 @@
-package com.example.flightaflokkat
+package com.example.flightaflokkat.flightlist
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.Button
-import android.widget.TextView
+import android.widget.ListView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.example.flightstats.Utils
+import com.example.flightaflokkat.R
 
 class FlightListActivity : AppCompatActivity(){
 
@@ -28,7 +27,9 @@ class FlightListActivity : AppCompatActivity(){
 
         viewmodel.getFlightListLiveData().observe(this, Observer {
             //findViewById<TextView>(R.id.textView).text = it.toString()
-            //findViewById<FlightInfoCell>(R.id.flightCell).bindData(it[0])
+            val listView = findViewById<ListView>(R.id.listview)
+            listView.adapter=
+                ListViewAdapter(it)
         })
 
         viewmodel.getLoadingLiveData().observe(this, Observer {

@@ -1,4 +1,4 @@
-package com.example.flightaflokkat
+package com.example.flightaflokkat.form
 
 import android.app.DatePickerDialog
 import android.content.Intent
@@ -8,10 +8,10 @@ import android.util.Log
 import android.widget.*
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
-import com.example.flightstats.Utils
+import com.example.flightaflokkat.R
+import com.example.flightaflokkat.flightlist.FlightListActivity
 import java.text.SimpleDateFormat
 import java.util.*
-import kotlin.collections.ArrayList
 
 class MainActivity : AppCompatActivity() {
     private lateinit var beginDateTexview: TextView
@@ -106,7 +106,7 @@ class MainActivity : AppCompatActivity() {
              "begin = $begin, end = $end, isArrival = $isArrival, airportIcao = $airportIcao"
          )
 
-        val intent = Intent(this,FlightListActivity::class.java)
+        val intent = Intent(this, FlightListActivity::class.java)
         intent.putExtra("BEGIN", begin)
         intent.putExtra("END", end)
         intent.putExtra("IS_ARRIVAL", isArrival)

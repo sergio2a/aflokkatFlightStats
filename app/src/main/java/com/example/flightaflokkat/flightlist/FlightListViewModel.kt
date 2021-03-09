@@ -1,12 +1,13 @@
-package com.example.flightaflokkat
+package com.example.flightaflokkat.flightlist
 
 import android.os.Looper
 import android.util.Log
-import android.widget.TextView
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.flightaflokkat.models.FlightModel
+import com.example.flightaflokkat.utils.RequestsManager
 import com.example.flightstats.Utils
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -56,7 +57,10 @@ class FlightListViewModel : ViewModel()/*, RequestsManager.RequestListener*/ {
             val result = withContext(Dispatchers.IO) {
                 Log.i("COROUTINES", "ici 3")
                 Log.i("COROUTINES", (Looper.getMainLooper() == Looper.myLooper()).toString())
-                RequestsManager.getSuspended(url, HashMap())
+                RequestsManager.getSuspended(
+                    url,
+                    HashMap()
+                )
             }
 
             val flightList = Utils.getFlightListFromJson(result!!)

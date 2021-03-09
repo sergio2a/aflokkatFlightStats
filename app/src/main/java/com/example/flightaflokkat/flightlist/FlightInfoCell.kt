@@ -1,10 +1,12 @@
-package com.example.flightaflokkat
+package com.example.flightaflokkat.flightlist
 
 import android.content.Context
 import android.util.AttributeSet
 import android.view.LayoutInflater
 import android.widget.LinearLayout
 import android.widget.TextView
+import com.example.flightaflokkat.models.FlightModel
+import com.example.flightaflokkat.R
 import com.example.flightstats.Utils
 
 /**
@@ -51,8 +53,7 @@ class FlightInfoCell : LinearLayout {
         flightNameTextView = findViewById(R.id.flightNumberTextView)
     }
 
-    //CACA: c'est pas bien de traiter de la donner dans une vue
-    // et pourtant il le fait quand même le formateur.
+    //CACA: c'est pas bien de traiter de la donneé dans une vue
     fun bindData(flight: FlightModel) {
         //fill your views
         //flight.name ->  TextView

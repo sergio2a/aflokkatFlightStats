@@ -1,4 +1,4 @@
-package com.example.flightaflokkat
+package com.example.flightaflokkat.models
 
 /**
  * Created by sergio on 04/03/2021

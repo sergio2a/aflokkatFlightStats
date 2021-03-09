@@ -1,4 +1,4 @@
-package com.example.flightaflokkat
+package com.example.flightaflokkat.utils
 
 import android.util.Log
 import java.io.BufferedReader
@@ -92,8 +92,8 @@ class RequestsManager {
                 val httpURLConnection =
                     url.openConnection() as HttpURLConnection
                 httpURLConnection.requestMethod = "GET"
-                httpURLConnection.connectTimeout = 10000
-                httpURLConnection.readTimeout = 10000
+                httpURLConnection.connectTimeout = 20000
+                httpURLConnection.readTimeout = 20000
                 Log.i(
                     "RequestManager",
                     "Request[GET]: \nURL: $finalSourceUrl\nNb Param: $c"

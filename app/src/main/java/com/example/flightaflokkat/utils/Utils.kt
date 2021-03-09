@@ -2,7 +2,7 @@ package com.example.flightstats
 
 import android.content.Context
 import android.util.Log
-import com.example.flightaflokkat.FlightModel
+import com.example.flightaflokkat.models.FlightModel
 import com.google.gson.Gson
 import com.google.gson.JsonArray
 import com.google.gson.JsonParser

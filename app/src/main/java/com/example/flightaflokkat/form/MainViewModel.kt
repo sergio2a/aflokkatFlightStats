@@ -1,4 +1,4 @@
-package com.example.flightaflokkat
+package com.example.flightaflokkat.form
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData

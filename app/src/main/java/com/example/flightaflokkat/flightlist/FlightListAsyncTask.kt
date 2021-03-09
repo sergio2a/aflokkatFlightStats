@@ -1,7 +1,8 @@
-package com.example.flightaflokkat
+package com.example.flightaflokkat.flightlist
 
 import android.os.AsyncTask
 import android.util.Log
+import com.example.flightaflokkat.utils.RequestsManager
 
 /**
  * Created by sergio on 3/4/21
@@ -15,7 +16,10 @@ class FlightListAsyncTask(listener: RequestsManager.RequestListener) : AsyncTask
 
         val url =urls[0]
 
-        var result = RequestsManager.get(url, HashMap())
+        var result = RequestsManager.get(
+            url,
+            HashMap()
+        )
         if(result != null)
             Log.i("RESULT", result)
         else
