@@ -20,14 +20,17 @@ class ListViewAdapter : BaseAdapter {
     }
 
     override fun getView(position: Int, convertView: View?, container: ViewGroup?): View {
-        Log.i("LISTVIEW", "getView call with position $position")
+        Log.i("LISTVIEW", "getView call with position $position and convertView = $convertView")
         //Creation vue
-        val flightInfoCell =
-            FlightInfoCell(container!!.context)
+        var flightInfoCell :FlightInfoCell? = null
+        if(convertView == null)
+            flightInfoCell= FlightInfoCell(container!!.context)
+        else
+            flightInfoCell = convertView as FlightInfoCell?
         //BindData with postion
-        flightInfoCell.bindData(flightList[position])
+        flightInfoCell?.bindData(flightList[position])
         //return view
-        return flightInfoCell
+        return flightInfoCell!!
     }
 
     override fun getCount(): Int {

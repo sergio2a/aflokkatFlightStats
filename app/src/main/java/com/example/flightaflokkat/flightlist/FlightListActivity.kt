@@ -3,12 +3,13 @@ package com.example.flightaflokkat.flightlist
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
-import android.widget.ListView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.flightaflokkat.R
 
-class FlightListActivity : AppCompatActivity(){
+class FlightListActivity : AppCompatActivity() {
 
     private lateinit var viewmodel: FlightListViewModel
 
@@ -27,18 +28,17 @@ class FlightListActivity : AppCompatActivity(){
 
         viewmodel.getFlightListLiveData().observe(this, Observer {
             //findViewById<TextView>(R.id.textView).text = it.toString()
-            val listView = findViewById<ListView>(R.id.listview)
-            listView.adapter=
-                ListViewAdapter(it)
+            val recyclerView = findViewById<RecyclerView>(R.id.recyclerview)
+            recyclerView.adapter = RecyclerViewAdapter(it)
+            recyclerView.layoutManager =  LinearLayoutManager(this, LinearLayoutManager.VERTICAL, false)
         })
 
         viewmodel.getLoadingLiveData().observe(this, Observer {
-           if(it){
-               progressBar.visibility = View.VISIBLE
-           }
-           else{
-               progressBar.visibility = View.INVISIBLE
-           }
+            if (it) {
+                progressBar.visibility = View.VISIBLE
+            } else {
+                progressBar.visibility = View.INVISIBLE
+            }
         })
 
         viewmodel.search(begin, end, isArrival, airportIcao!!)
